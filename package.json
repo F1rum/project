@@ -1,0 +1,25 @@
+{
+  "name": "tgbot_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot_development/bot_test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomercyzzz/project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nomercyzzz/project/issues"
+  },
+  "homepage": "https://github.com/nomercyzzz/project#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
