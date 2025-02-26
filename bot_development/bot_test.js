@@ -2,6 +2,9 @@ require('dotenv').config();
 const { Telegraf } = require('telegraf');
 // импортируем модуль command_instruction и присваиваем его переменной
 const command_instruction = require('./command_instruction');
+// модуль для работы с путями
+const path = require('path');
+// cоздаём бота беря токен из файла .env
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
 
@@ -12,8 +15,10 @@ bot.help((ctx)=>{
 });
 
 bot.start((ctx) =>{
-  ctx.replyWithSticker('https://cdn2.combot.org/programmingsuicaplusplus/webp/16xf09f9396.webp');
-  ctx.reply('Привет! 👋 Я — твой помощник по скидкам. Хочешь найти самые выгодные предложения в магазинах? Я помогу тебе найти лучшие скидки. 📉💸');
+  // отправка фото из текущей директории
+  ctx.replyWithPhoto({ source: path.join(__dirname, 'photo_start.jpg')},{
+    caption: 'Привет! 👋 Устал натыкаться на бесполезные боты со скидками, где больше рекламы, чем реальной выгоды? Ты попал по адресу! Я найду для тебя только настоящие скидки в супермаркетах, без лишнего шума. Экономь время и деньги – просто выбирай, что нужно! 🛒💰'
+  });
 });
 
 
