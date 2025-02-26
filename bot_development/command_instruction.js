@@ -3,7 +3,7 @@ const { Telegraf } = require('telegraf');
 module.exports = function command_instruction(bot) {
     // обработка кнопки инструкция 
     bot.hears('📖 Инструкция', (ctx) => {
-        ctx.reply('<b>📖 Инструкция по использованию бота:</b> \n\n ℹ️ Выберите нужную страницу для просмотра.', {
+        ctx.reply('<b>📖 Инструкция по использованию бота:</b> \n\n👉 Выберите нужную страницу для просмотра.', {
             parse_mode: "HTML",
             reply_markup: {
                 keyboard: [
@@ -32,13 +32,13 @@ module.exports = function command_instruction(bot) {
             parse_mode: "HTML"
         });
     });
-
+    // возвращаем пользователя в главное меню с кнопками
     bot.hears('⬅️ Главное меню', (ctx) => {
         ctx.reply('<b>✅ Вы вернулись в главное меню </b>',{
             parse_mode: "HTML",
             reply_markup: {
                 keyboard: [
-                    [{ text: "🔍 Функционал" }, { text: "📖 Инструкция" }],
+                    [{ text: "📜 Функционал" }, { text: "📖 Инструкция" }],
                     [{ text: "🤖 AI-ассистент" }]
                 ],
                 resize_keyboard: true, 
