@@ -1,9 +1,11 @@
+/* Кнопка занимает 100% отведённого ей места, интерфейс легко адаптируется к любому количеству кнопок */
+
 .bottomNav {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #212121; /* Цвет фона, как в Telegram */
+    background-color: #212121;
     display: flex;
     justify-content: space-around;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
@@ -20,9 +22,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #b0b0b0; /* Серый цвет текста */
+    color: #b0b0b0;
 }
 
 .bottomNav .active {
-    color: #0088cc; /* Telegram-синий для активной кнопки */
+    color: #0088cc;
 }
