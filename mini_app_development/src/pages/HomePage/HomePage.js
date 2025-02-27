@@ -20,17 +20,18 @@ export default function HomePage() {
     return (
         <>
             <div className={styles.navBarHomePage}>
-                <div className={styles.avatarWrapper}>
-                    <img
-                        src={user?.photo_url || defaultAvatar}
-                        alt="Аватар"
-                        className={styles.avatar}
-                        onError={(e) => (e.target.style.display = "none")}
-                    />
-                </div>
+                <button
+                    className={styles.avatarWrapper}
+                    onClick={() => console.log("Открыть профиль")} // Здесь будет функция для перехода в профиль
+                >
+                    {user?.photo_url ? (
+                        <img src={user.photo_url} alt="Аватар" className={styles.avatar} />
+                    ) : (
+                        <div className={styles.avatarFallback}></div> // Серый фон, если нет аватарки
+                    )}
+                </button>
 
                 <div className={styles.navBarMenu}>
-                    {/* Изменено: Используем `left` */}
                     <div
                         className={styles.activeHighlight}
                         style={{

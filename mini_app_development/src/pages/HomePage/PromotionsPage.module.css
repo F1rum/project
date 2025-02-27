@@ -1,0 +1,141 @@
+.promotionsCount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+    padding: 30px 0 50px 0;
+    width: 100%;
+}
+
+.promotionsCount h5 {
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.promotionsCount h1 {
+    font-size: 62px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -1px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background-color: #1a1a1a;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 5px solid #444;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.filters button {
+    background: #2a2a2a;
+    width: 140px;
+    height: 30px;
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+
+    flex-shrink: 0;
+}
+
+
+
+
+.promotionsList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.promotionsList > h1 {
+    font-size: 28px;
+    font-weight: 700;
+    padding: 5px 12px;
+    color: white;
+    letter-spacing: -1px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #212121;
+}
+
+.stylesForTest {
+    font-size: 16px;
+    color: white;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.stylesForTest h1 {
+    border-bottom: 3px solid #444;
+}
+
+.stylesForTest h5 {
+    padding: 15px 0 5px 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.stylesForTest div {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    gap: 5px;
+    justify-content: flex-start;
+    background-color: #1E1E1E;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+}
+
+.stylesForTest button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #E6E6E6;
+    width: 130px;
+    height: 150px;
+    border: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 15px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.stylesForTest h4 {
+    position: absolute;
+    font-size: 14px;
+    bottom: 10px;
+    color: #444;
+    padding-top: 10px;
+    margin-top: auto;
+}
+
