@@ -1,4 +1,6 @@
 // для работы скачиваем библиотеку гигачата (npm install gigachat)
+// npm list gigachat (проверьте версию гигачата) - сейчас версия 0.0.12 (более новой версии пока что не существует в репозитории NPM)
+
 
 
 
@@ -36,10 +38,10 @@ async function askGigaChat(prompt) {
         });
         // возвращаем ответ от гигачата или сообщение об ошибке
         return response.choices[0]?.message.content || '⚠️ Ответ не получен';
-    } catch (error) {
-        console.error('Ошибка запроса в GigaChat:', error.response?.data || error.message);
-        return '⚠️ Ошибка доступа к GigaChat';
-    }
+        } catch (error) {
+            console.error('Ошибка запроса в GigaChat:', error.response?.data || error.message);
+            return '⚠️ Ошибка доступа к GigaChat';
+        }
 }
 
 // экспортируем функцию в основу бота
@@ -47,7 +49,7 @@ module.exports = function command_ai_assistant(bot) {
     bot.hears('🤖 AI-ассистент', async (ctx) => {
         ctx.reply('🧠 Привет! Я AI-ассистент. Задавай вопросы, и я постараюсь помочь!');
     });
-
+    
     bot.on('text', async (ctx) => {
         const usermessage = ctx.message.text;
         const response = await askGigaChat(usermessage);
