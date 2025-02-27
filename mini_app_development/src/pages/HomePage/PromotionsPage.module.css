@@ -1,3 +1,7 @@
+.promotionsPage {
+    margin: 0 0 85px 0;
+}
+
 .promotionsCount {
     display: flex;
     flex-direction: column;
