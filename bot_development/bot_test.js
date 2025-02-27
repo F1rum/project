@@ -4,6 +4,7 @@ const { Telegraf } = require('telegraf');
 const command_instruction = require('./command_instruction');
 // импортируем модуль command_functional и присваеиваем его переменной 
 const command_functional = require('./command_functional');
+const command_ai_assistant = require('./command_ai_assistant');
 // модуль для работы с путями
 const path = require('path');
 // cоздаём бота беря токен из файла .env
@@ -50,15 +51,7 @@ command_instruction(bot);
 
 command_functional(bot);
 
-
-
-
-// обработка кнопки аи ассистент 
-bot.hears("🤖 AI-ассистент", (ctx) => {
-  ctx.reply("🤖 AI-ассистент готов помочь!", {
-    reply_markup: { remove_keyboard: true }
-  });
-});
+command_ai_assistant(bot);
 
 
 
