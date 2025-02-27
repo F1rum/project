@@ -1,0 +1,80 @@
+.avatarWrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #444; /* Серый фон */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navBarHomePage {
+    flex-direction: row;
+    display: flex;
+    left: 0;
+    gap: 20px;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBarHomePage div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navBarHomePage button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.navBarMenu {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    border: 1px solid #444;
+    position: relative;
+    width: 200px; /* Общая ширина */
+    height: 40px;
+}
+
+.navBarMenu .activeHighlight {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    width: 50%; /* Чёткое выделение 50% */
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #444;
+    border-radius: 30px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.navBarMenu button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    text-align: center;
+}
