@@ -30,9 +30,6 @@
     display: flex;
     gap: 10px;
     padding: 10px;
-    background-color: #1a1a1a;
-    border-top: 1px solid #1a1a1a;
-    border-bottom: 5px solid #444;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -41,24 +38,29 @@
 
 .filters button {
     background: #2a2a2a;
-    width: 140px;
-    height: 30px;
+    width: 90px;
+    height: 70px;
     border: none;
-    color: white;
-    font-size: 14px;
+    color: #0088cc;
+    font-size: 12px;
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 15px;
     cursor: pointer;
     
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     
 
     flex-shrink: 0;
+}
+
+.filters span {
+    font-size: 28px;
+    color: #888;
 }
 
 
@@ -79,16 +81,17 @@
     color: white;
     letter-spacing: -1px;
     background-color: #1a1a1a;
-    border-bottom: 1px solid #212121;
+    border: 1px solid #212121;
 }
 
 .stylesForTest {
     font-size: 16px;
     color: white;
-    background-color: #1a1a1a;
+    background-color: #2a2a2a;
     border: 1px solid #444;
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
+    border-radius: 20px;
 }
 
 .stylesForTest h1 {
@@ -108,7 +111,7 @@
     padding: 5px;
     gap: 5px;
     justify-content: flex-start;
-    background-color: #1E1E1E;
+    background-color: #1a1a1a;
     color: white;
     border: 1px solid #444;
     border-radius: 10px;
@@ -122,11 +125,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #E6E6E6;
+    background: #444;
     width: 130px;
     height: 150px;
     border: none;
-    color: black;
+    color: #00C853;
     font-size: 20px;
     font-weight: 700;
     border-radius: 15px;
@@ -138,7 +141,7 @@
     position: absolute;
     font-size: 14px;
     bottom: 10px;
-    color: #444;
+    color: #888;
     padding-top: 10px;
     margin-top: auto;
 }

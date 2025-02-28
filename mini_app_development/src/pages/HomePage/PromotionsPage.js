@@ -29,14 +29,37 @@ export default function PromotionsPage() {
                 <h1>{items.length}</h1> 
             </div>
 
+            {/* Фильтры */}
             <div className={styles.filtersWrapper}>
                 <div className={styles.filters}>
-                    <button onClick={sortByAmount}>🔽 По количеству</button>
-                    <button onClick={filterHotDeals}>🔥 Горячие</button>
-                    <button onClick={sortByAmount}>🔽 По количеству</button>
-                    <button onClick={filterHotDeals}>🔥 Горячие</button>
+                    <button onClick={sortByAmount}>
+                        <span>🔽</span> 
+                        По количеству
+                    </button>
+                    <button onClick={filterHotDeals}>
+                        <span>🔥</span> 
+                        Горячие
+                    </button>
+                    <button onClick={sortByAmount}>
+                        <span>🔽</span> 
+                        По количеству
+                    </button>
+                    <button onClick={filterHotDeals}>
+                        <span>🔥</span> 
+                        Горячие
+                    </button>
+                    <button onClick={sortByAmount}>
+                        <span>🔽</span> 
+                        По количеству
+                    </button>
+                    <button onClick={filterHotDeals}>
+                        <span>🔥</span> 
+                        Горячие
+                    </button>
                 </div>
             </div>
+
+            {/* Список акций */}
             <div className={styles.promotionsList}>
                 <h1>Список акций:</h1>
                 <div className={styles.stylesForTest}>
@@ -50,39 +73,10 @@ export default function PromotionsPage() {
                         <button onClick={() => copyToClipboard("#SALE20")}>
                             #SALE20
                             <h4>До 15 марта</h4>
-                            </button>
-                        <button onClick={() => copyToClipboard("#SALE50")}>
-                            #SALE50
-                            <h4>До 31 марта</h4>
-                            </button>
-                        <button onClick={() => copyToClipboard("#PETYA10")}>
-                            #PETYA10
-                            <h4>До 5 марта</h4>
-                            </button>
-                        <button onClick={() => copyToClipboard("#MINIAPP")}>
-                            #MINIAPP
-                            <h4>До 31 марта</h4>
-                            </button>
-                        <button onClick={() => copyToClipboard("#TEST10")}>
-                            #TEST10
-                            <h4>До 31 марта</h4>
-                            </button>
-                        <button onClick={() => copyToClipboard("#BOT30")}>
-                            #BOT30
-                            <h4>До 31 марта</h4>
-                            </button>
-                        <button onClick={() => copyToClipboard("#SALEBOT")}
-                            >#SALEBOT
-                            <h4>До 31 марта</h4>
-                            </button>
+                        </button>
                     </div>
                 </div>
-                <p>Это тестовый пример для демонстрации, можно использовать как Промокоды, так и товары по акции, данная страница пока что только для примера дальнейшей работы. /// P.S. стилизация не является окончательной</p>
-                {/*<ul>
-                {items.map((item, index) => (
-                    <li key={index}>{item.name} - {item.amount} шт.</li>    
-                ))}
-                </ul>*/}
+                <p>Это не окончательная стилизация.</p>
             </div>
         </div>
     );
