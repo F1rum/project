@@ -34,7 +34,9 @@ export default function HomePage() {
                 <div className={styles.navBarMenu}>
                     <div
                         className={styles.activeHighlight}
-                        style={{ left: activeCategory === "Акции" ? "0%" : "50%" }}
+                        style={{
+                            transform: `translate3d(${activeCategory === "Акции" ? "0%" : "100%"}, 0, 0)`,
+                        }}
                     />
                     <button onClick={() => setActiveCategory("Акции")}>Акции</button>
                     <button onClick={() => setActiveCategory("Продукты")}>Продукты</button>
