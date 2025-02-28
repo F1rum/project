@@ -48,8 +48,8 @@
     align-items: center;
     justify-content: center;
     color: white;
-    min-width: 50px; /* Задаём минимальный размер кнопки */
-    min-height: 50px; /* Теперь кликать удобно, но аватар не уменьшается */
+    min-width: 50px;
+    min-height: 50px;
 }
 
 
@@ -60,7 +60,7 @@
     border-radius: 30px;
     border: 1px solid #444;
     position: relative;
-    width: 200px; /* Общая ширина */
+    width: 200px;
     height: 40px;
 }
 
@@ -72,7 +72,7 @@
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid #444;
     border-radius: 30px;
-    transition: left 0.3s ease-in-out;
+    transition: left 0.15s ease-in-out;
     z-index: 1;
 }
 
