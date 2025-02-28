@@ -2,6 +2,7 @@
 
 
 
+
 // импортируем модуль для работы с HTTPS
 const { Agent } = require('https');
 // импортируем файловую систему для чтения файлов
@@ -26,7 +27,7 @@ const httpsAgent = new Agent({
 async function askGigaChat(prompt) {
     try {
         const giga = new GigaChat({
-            model: 'GigaChat',
+            model: 'GigaChat-Max',
             credentials: process.env.GIGACHAT_API_KEY,
             httpsAgent,
         });
@@ -36,10 +37,10 @@ async function askGigaChat(prompt) {
         });
         // возвращаем ответ от гигачата или сообщение об ошибке
         return response.choices[0]?.message.content || '⚠️ Ответ не получен';
-    } catch (error) {
-        console.error('Ошибка запроса в GigaChat:', error.response?.data || error.message);
-        return '⚠️ Ошибка доступа к GigaChat';
-    }
+        } catch (error) {
+            console.error('Ошибка запроса в GigaChat:', error.response?.data || error.message);
+            return '⚠️ Ошибка доступа к GigaChat';
+        }
 }
 
 // экспортируем функцию в основу бота
@@ -47,7 +48,7 @@ module.exports = function command_ai_assistant(bot) {
     bot.hears('🤖 AI-ассистент', async (ctx) => {
         ctx.reply('🧠 Привет! Я AI-ассистент. Задавай вопросы, и я постараюсь помочь!');
     });
-
+    
     bot.on('text', async (ctx) => {
         const usermessage = ctx.message.text;
         const response = await askGigaChat(usermessage);
