@@ -4,6 +4,7 @@
 
 
 
+
 // импортируем модуль для работы с HTTPS
 const { Agent } = require('https');
 // импортируем файловую систему для чтения файлов
@@ -28,7 +29,7 @@ const httpsAgent = new Agent({
 async function askGigaChat(prompt) {
     try {
         const giga = new GigaChat({
-            model: 'GigaChat',
+            model: 'GigaChat-Max',
             credentials: process.env.GIGACHAT_API_KEY,
             httpsAgent,
         });
