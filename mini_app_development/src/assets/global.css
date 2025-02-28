@@ -8,9 +8,22 @@ body {
     background-color: #1c1c1c;
     color: #ffffff;
     font-family: Arial, sans-serif;
+    height: 100vh; /* Фиксируем высоту на весь экран */
+    width: 100%;
+    overscroll-behavior: contain; /* Отключает эффект "пружины" */
+    -webkit-overflow-scrolling: touch; /* Улучшает скроллинг на iOS */
 }
 
 html, body {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Отключаем горизонтальный скролл */
+    overflow-y: hidden; /* По умолчанию вертикальный скролл отключен */
+    touch-action: manipulation; /* Улучшает работу жестов в Web App */
 }
+
+.scrollable {
+    overflow-y: auto !important;
+    height: 100vh;
+    -webkit-overflow-scrolling: touch;
+}
+

@@ -9,11 +9,12 @@ import { useTab } from "./context/TabContext";
 function AppContent() {
     const { activeTab } = useTab();
 
+    //Отключение сворачивания приложения при свайпе вниз
     useEffect(() => {
         if (window.Telegram?.WebApp) {
             window.Telegram.WebApp.ready();
             window.Telegram.WebApp.expand();
-            window.Telegram.WebApp.setHeaderColor("#000000");
+            window.Telegram.WebApp.setHeaderColor("#000000"); //чёрный цвет заголовка
             window.Telegram.WebApp.disableVerticalSwipes();
         }
     }, []);

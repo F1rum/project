@@ -1,7 +1,6 @@
 import { Settings } from "lucide-react";
 import { useEffect, useState } from "react";
 import styles from "./HomePage.module.css";
-import defaultAvatar from "./Кошка.jpg";
 import PromotionsPage from "./PromotionsPage";
 import ProductsPage from "./ProductsPage";
 
@@ -18,25 +17,24 @@ export default function HomePage() {
     }, []);
 
     return (
-        <>
+        // Вся страница HomePage теперь прокручивается
+        <div className="scrollable">
             <div className={styles.navBarHomePage}>
                 <button
                     className={styles.avatarWrapper}
-                    onClick={() => console.log("Открыть профиль")} // Здесь будет функция для перехода в профиль
+                    onClick={() => console.log("Открыть профиль")}
                 >
                     {user?.photo_url ? (
                         <img src={user.photo_url} alt="Аватар" className={styles.avatar} />
                     ) : (
-                        <div className={styles.avatarFallback}></div> // Серый фон, если нет аватарки
+                        <div className={styles.avatarFallback}></div>
                     )}
                 </button>
 
                 <div className={styles.navBarMenu}>
                     <div
                         className={styles.activeHighlight}
-                        style={{
-                            left: activeCategory === "Акции" ? "0%" : "50%",
-                        }}
+                        style={{ left: activeCategory === "Акции" ? "0%" : "50%" }}
                     />
                     <button onClick={() => setActiveCategory("Акции")}>Акции</button>
                     <button onClick={() => setActiveCategory("Продукты")}>Продукты</button>
@@ -47,9 +45,10 @@ export default function HomePage() {
                 </button>
             </div>
 
+            {/* Контент прокручивается вместе с верхним блоком */}
             <div className={styles.pageContent}>
                 {activeCategory === "Акции" ? <PromotionsPage /> : <ProductsPage />}
             </div>
-        </>
+        </div>
     );
 }
