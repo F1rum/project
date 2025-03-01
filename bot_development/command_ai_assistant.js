@@ -25,24 +25,29 @@ const httpsAgent = new Agent({
     rejectUnauthorized: true,
 });
 
+// храним историю сообщений пользователей
+const conversations = new Map();
+
 // функция для работы с гигачатом
-async function askGigaChat(prompt) {
-    try {
-        const giga = new GigaChat({
-            model: 'GigaChat-Max',
-            credentials: process.env.GIGACHAT_API_KEY,
-            httpsAgent,
-        });
-        // отправляем запрос к гигачату
-        const response = await giga.chat({
-            messages: [{ role: 'user', content: prompt }],
-        });
-        // возвращаем ответ от гигачата или сообщение об ошибке
-        return response.choices[0]?.message.content || '⚠️ Ответ не получен';
-        } catch (error) {
-            console.error('Ошибка запроса в GigaChat:', error.response?.data || error.message);
-            return '⚠️ Ошибка доступа к GigaChat';
-        }
+async function askGigaChat(userid, prompt) {
+    // получаем историю сообщений пользователя из conversations (если нет - создаем пустой массив)
+    let history = conversations.get(userid) || [];
+    // добавляем новое сообщение пользователя в историю
+    history.push({ role: 'user', content: prompt });
+
+    const gigaChat = new GigaChat({
+        model: 'GigaChat-Max',
+        credentials: process.env.GIGACHAT_API_KEY,
+        httpsAgent
+    });
+    // отправляем запрос к гигачат с историей сообщений
+    const response = await gigaChat.chat({ messages: history });
+    const reply = response.choices[0]?.message.content || '⚠️ Ошибка';
+    // добавляем ответ гигачата в историю сообщений
+    history.push({ role: 'assistant', content: reply });
+    conversations.set(userid, history);
+    
+    return reply;
 }
 
 // экспортируем функцию в основу бота
@@ -52,8 +57,10 @@ module.exports = function command_ai_assistant(bot) {
     });
     
     bot.on('text', async (ctx) => {
+        ctx.reply('💭 Думаю...');
+        const userid = ctx.message.from.id;
         const usermessage = ctx.message.text;
-        const response = await askGigaChat(usermessage);
+        const response = await askGigaChat(userid,usermessage);
         ctx.reply(response);
     });
 };
