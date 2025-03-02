@@ -4,7 +4,8 @@
 
 
 
-
+const command_instruction = require('./command_instruction');
+const command_functional = require('./command_functional');
 // импортируем модуль для работы с HTTPS
 const { Agent } = require('https');
 // импортируем файловую систему для чтения файлов
@@ -49,18 +50,63 @@ async function askGigaChat(userid, prompt) {
     
     return reply;
 }
-
+// создание множества для хранения id пользователей с включенный ai ассистентом
+const aiEnable=new Set();
 // экспортируем функцию в основу бота
 module.exports = function command_ai_assistant(bot) {
     bot.hears('🤖 AI-ассистент', async (ctx) => {
-        ctx.reply('🧠 Привет! Я AI-ассистент. Задавай вопросы, и я постараюсь помочь!');
+        const userid = ctx.message.from.id;
+        // добавление пользователя в множество
+        aiEnable.add(userid);
+        ctx.reply('🧠 Привет! Я AI-ассистент. Задавай вопросы, и я постараюсь помочь!',{
+            reply_markup: {
+                keyboard: [
+                    [{ text: "⬅️ Главное меню"}]
+                ],
+                resize_keyboard: true
+            }
+        });
     });
     
-    bot.on('text', async (ctx) => {
-        ctx.reply('💭 Думаю...');
+    bot.hears('⬅️ Главное меню', (ctx) => {
         const userid = ctx.message.from.id;
-        const usermessage = ctx.message.text;
-        const response = await askGigaChat(userid,usermessage);
-        ctx.reply(response);
+        // проверка есть ли пользователь в множестве
+        if (aiEnable.has(userid)) {
+            // удаление пользователя из множества если он там есть
+            aiEnable.delete(userid);
+        }
+    
+        ctx.reply('<b>✅ Вы вернулись в главное меню</b>', {
+            parse_mode: "HTML",
+            reply_markup: {
+                keyboard: [
+                    [{ text: "📜 Функционал" }, { text: "📖 Инструкция" }],
+                    [{ text: "🤖 AI-ассистент" }]
+                ],
+                resize_keyboard: true,
+                one_time_keyboard: false
+            }
+        });
     });
+    // вызод функций из других файлов т к ай асситент продолжал работу после выхода в глвное меню 
+    command_instruction(bot);
+    
+    command_functional(bot);
+
+    bot.on('text', async (ctx) => {
+
+        const userid = ctx.message.from.id;
+        // если нет пользователя в множестве то выводиим сообщение и выходим 
+        if (!aiEnable.has(userid)) {
+            return ctx.reply('❌ AI-ассистент не активирован. Нажмите <b>🤖 AI-ассистент</b> в меню.', {
+                parse_mode: "HTML"
+            });
+        }
+    
+        ctx.reply('<b>💭 Думаю...</b>', { parse_mode: "HTML" });
+    
+        const usermessage = ctx.message.text;
+        const response = await askGigaChat(userid, usermessage);
+        ctx.reply(response);
+    });    
 };
