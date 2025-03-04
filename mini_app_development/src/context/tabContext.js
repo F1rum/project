@@ -1,3 +1,4 @@
+//Реализация функционала подвала
 import { createContext, useContext, useState } from "react";
 
 const TabContext = createContext();

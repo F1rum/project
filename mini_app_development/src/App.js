@@ -12,10 +12,10 @@ function AppContent() {
     //Отключение сворачивания приложения при свайпе вниз
     useEffect(() => {
         if (window.Telegram?.WebApp) {
-            window.Telegram.WebApp.ready();
-            window.Telegram.WebApp.expand();
+            window.Telegram.WebApp.ready(); //Ожидание
+            window.Telegram.WebApp.expand(); //Автоматическое "поднятие" приложения
             window.Telegram.WebApp.setHeaderColor("#000000"); //чёрный цвет заголовка
-            window.Telegram.WebApp.disableVerticalSwipes();
+            window.Telegram.WebApp.disableVerticalSwipes(); //Отключение сворачивания при свайпе вниз)
         }
     }, []);
 

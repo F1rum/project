@@ -1,0 +1,117 @@
+.productsPage {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.productsNews {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+}
+
+.productNewsContainer {
+    display: flex;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+.newsCard {
+    position: relative;
+    width: 200px;
+    height: 280px;
+    border-radius: 20px;
+    overflow: hidden;
+    flex-shrink: 0; /*отключение сжимания карточки*/
+    scroll-snap-align: start;
+    background-color: #f5f5f5; /*на случай если карточка не загружается*/
+    border: 2px solid #0077b8;
+}
+
+.newsImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*Сохранение пропорций при обрезании изображения*/
+}
+
+.newsTitle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Градиент */
+    padding: 5px 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    white-space: normal;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.productsCategories {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px 0 0 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.productsCategories h1 {
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    font-weight: bold;
+    padding: 10px 20px 10px 20px;
+}
+
+.categoriesContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0 0 0 20px;
+    gap: 20px;
+    text-align: center;
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+.categoriesButton {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: 50px solid blue;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.categoriesImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*Сохранение пропорций при обрезании изображения*/
+
+}
+
+.categoriesTitle {
+    font-size: 18px;
+    font-weight: 500;
+}

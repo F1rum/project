@@ -10,7 +10,6 @@
     width: 100%;
     gap: 5px;
     padding: 30px 0 50px 0;
-    width: 100%;
 }
 
 .promotionsCount h5 {
@@ -25,46 +24,6 @@
     color: white;
     letter-spacing: -1px;
 }
-
-.filters {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
-
-
-.filters button {
-    background: #2a2a2a;
-    width: 90px;
-    height: 70px;
-    border: none;
-    color: #0088cc;
-    font-size: 12px;
-    padding: 8px 12px;
-    border-radius: 15px;
-    cursor: pointer;
-    
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    
-
-    flex-shrink: 0;
-}
-
-.filters span {
-    font-size: 28px;
-    color: #888;
-}
-
-
-
 
 .promotionsList {
     display: flex;
@@ -83,66 +42,3 @@
     background-color: #1a1a1a;
     border: 1px solid #212121;
 }
-
-.stylesForTest {
-    font-size: 16px;
-    color: white;
-    background-color: #2a2a2a;
-    border: 1px solid #444;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 20px;
-}
-
-.stylesForTest h1 {
-    border-bottom: 3px solid #444;
-}
-
-.stylesForTest h5 {
-    padding: 15px 0 5px 0;
-    font-weight: 500;
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.stylesForTest div {
-    display: flex;
-    flex-direction: row;
-    padding: 5px;
-    gap: 5px;
-    justify-content: flex-start;
-    background-color: #1a1a1a;
-    color: white;
-    border: 1px solid #444;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    overflow-x: auto;
-}
-
-.stylesForTest button {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #444;
-    width: 130px;
-    height: 150px;
-    border: none;
-    color: #00C853;
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 15px;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.stylesForTest h4 {
-    position: absolute;
-    font-size: 14px;
-    bottom: 10px;
-    color: #888;
-    padding-top: 10px;
-    margin-top: auto;
-}
-
