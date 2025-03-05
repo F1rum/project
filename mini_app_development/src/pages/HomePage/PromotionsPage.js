@@ -34,7 +34,6 @@ export default function PromotionsPage() {
 
             {/* Список акций */}
             <div className={styles.promotionsList}>
-                <h1>Список акций:</h1>
                 <Promotions copyToClipboard={copyToClipboard} />
                 <p>Это не окончательная стилизация.</p>
             </div>

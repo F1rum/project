@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styles from "./Promotions.module.css";
 
-// 🔹 Компонент карточки акции
+// Компонент карточки акции
 const PromotionCard = ({ image, promotion, oldPrice, newPrice, addToCart }) => {
     return (
         <div className={styles.promotionCard}>
-            <img src={image} alt={promotion} className={styles.promotionImage} />
+            <img src={image} alt={promotion} className={styles.promotionImage} loading="lazy" />
             <h3>{promotion}</h3>
             <p>
                 <span className={styles.oldPrice}>{oldPrice} ₽</span> → <span className={styles.newPrice}>{newPrice} ₽</span>
@@ -15,14 +15,14 @@ const PromotionCard = ({ image, promotion, oldPrice, newPrice, addToCart }) => {
     );
 };
 
-// 🔹 Основной блок с акциями
+// Иммитация бэкенда
 export default function Promotions({ addToCart }) {
     const [promotions] = useState([
             {
                 "store": "Пятёрочка",
                 "image": "https://avatars.mds.yandex.net/i?id=e228843f49d03bc1751341bb10ba41b0f30bc3bb-10870276-images-thumbs&n=13",
-                "promotion": "Яблоки Гала 1 кг",
-                "oldPrice": 129.99,
+                "promotion": "Яблоки Гала 1 кгsssssssssssssssssssssssssssssssss",
+                "oldPrice": 12900000.99,
                 "newPrice": 89.99
             },
             {
@@ -104,7 +104,7 @@ export default function Promotions({ addToCart }) {
             }        
     ]);
 
-    // 🔹 Группируем акции по магазинам
+    // Группировка акций по магазинам
     const groupedPromotions = promotions.reduce((acc, promo) => {
         if (!acc[promo.store]) acc[promo.store] = []; // Если магазина ещё нет, создаём массив
         acc[promo.store].push(promo); // Добавляем акцию в нужный магазин

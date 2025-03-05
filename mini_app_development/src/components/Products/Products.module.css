@@ -10,7 +10,7 @@
     --button-hover: #333;
 }
 
-.promotionsPage {
+.productsPage {
     width: 100%;
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
@@ -34,7 +34,7 @@
 }
 
 /* Контейнер карточек */
-.promotionContainer {
+.productContainer {
     display: flex;
     overflow-x: auto;
     gap: 16px;
@@ -45,12 +45,12 @@
 }
 
 /* Скрытие скроллбара */
-.promotionContainer::-webkit-scrollbar {
+.productContainer::-webkit-scrollbar {
     display: none;
 }
 
 /* Карточка товара */
-.promotionCard {
+.productCard {
     flex: 0 0 auto;
     width: 180px;
     background: var(--card-bg);
@@ -65,12 +65,12 @@
     position: relative;
 }
 
-.promotionCard h3, .priceContainer {
+.productCard h3, .priceContainer {
     flex-grow: 1;
 }
 
 /* Фото товара */
-.promotionImage {
+.productImage {
     width: 100%;
     height: 110px;
     object-fit: cover;
@@ -78,23 +78,21 @@
     margin-bottom: 12px;
 }
 
-/* Название магазина (заменяем продукт на магазин) */
-.promotionCard h3 {
+/* Название продукта */
+.productCard h3 {
     font-size: 15px;
     font-weight: bold;
     color: var(--text-color);
     text-align: center;
-/*грамотный перенос при сликшом больших названиях*/
     white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
 }
 
-.promotionCard p {
+.productCard p {
     padding: 0 0 10px 0;
 }
-
 
 /* Блок с ценами */
 .priceContainer {
@@ -103,15 +101,8 @@
     align-items: center;
 }
 
-/* Старая цена */
-.oldPrice {
-    text-decoration: line-through;
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 12px;
-}
-
-/* Новая цена */
-.newPrice {
+/* Цена */
+.price {
     color: var(--accent-color);
     font-weight: bold;
     font-size: 18px;
@@ -144,7 +135,7 @@
 }
 
 /* Кнопка "В корзину" */
-.promotionCard button {
+.productCard button {
     background: var(--button-bg);
     color: #fff;
     border: none;
@@ -154,9 +145,9 @@
     font-weight: bold;
     cursor: pointer;
     transition: background 0.2s ease-in-out;
-    margin-bottom: auto; /* Автоматически прижимает кнопку вниз */
+    margin-top: auto;
 }
 
-.promotionCard button:hover {
+.productCard button:hover {
     background: var(--button-hover);
 }

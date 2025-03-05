@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px 0;
+    margin: 0 0 85px 0;
 }
 
 .productsNews {
@@ -114,4 +115,12 @@
 .categoriesTitle {
     font-size: 18px;
     font-weight: 500;
+}
+
+.ProductsList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding: 10px 0;
 }

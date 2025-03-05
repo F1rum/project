@@ -25,7 +25,7 @@ export default function HomePage() {
                     onClick={() => console.log("Открыть профиль")}
                 >
                     {user?.photo_url ? (
-                        <img src={user.photo_url} alt="Аватар" className={styles.avatar} />
+                        <img src={user.photo_url} alt="Аватар" className={styles.avatar} loading="lazy"/>
                     ) : (
                         <div className={styles.avatarFallback}></div>
                     )}

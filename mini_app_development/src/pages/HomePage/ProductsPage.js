@@ -2,10 +2,11 @@ import { useState } from "react";
 import images from "../../assets/images/images";
 import StoryViewer from "../../components/StoryViewer";
 import styles from "./ProductsPage.module.css";
+import Products from "../../components/Products/Products";
 
 const NewsCard = ({ title, image, onClick }) => (
     <button className={styles.newsCard} onClick={onClick}>
-        <img src={image} alt={title} className={styles.newsImage} />
+        <img src={image} alt={title} className={styles.newsImage} loading="lazy" />
         <h2 className={styles.newsTitle}>{title}</h2>
     </button>
 );
@@ -13,7 +14,7 @@ const NewsCard = ({ title, image, onClick }) => (
 const CategoriesCard = ({ title, image }) => (
     <div className={styles.categories}>
         <button className={styles.categoriesButton}>
-            <img src={image} alt={title} className={styles.categoriesImage} />
+            <img src={image} alt={title} className={styles.categoriesImage} loading="lazy"/>
         </button>
         <h2 className={styles.categoriesTitle}>{title}</h2>
     </div>
@@ -64,6 +65,11 @@ export default function ProductsPage() {
                     <CategoriesCard title="Напитки" image={images.BLINI} />
                     <CategoriesCard title="Другое" image={images.BLINI} />
                 </div>
+            </div>
+
+            <div className={styles.ProductsList}>
+                <Products />
+
             </div>
 
             {isStoryOpen && (
