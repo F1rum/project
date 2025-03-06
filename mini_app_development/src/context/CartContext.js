@@ -1,41 +1,82 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
 
-    // Загружаем корзину из localStorage при первом рендере
+    // Загружаем корзину из localStorage при загрузке
     useEffect(() => {
-        const storedCart = localStorage.getItem("cart");
-        if (storedCart) {
-            setCart(JSON.parse(storedCart));
-        }
+        const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+        setCart(storedCart);
     }, []);
 
-    // Обновляем localStorage при изменении корзины
+    // Сохраняем корзину в localStorage при каждом изменении
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
-    // Функция добавления товара в корзину
-    const addToCart = (product) => {
-        setCart((prevCart) => [...prevCart, product]);
+    // Добавить товар в корзину
+    const addToCart = (newItem) => {
+        setCart((prevCart) => {
+            // Проверяем, есть ли товар с таким же названием
+            const existingItem = prevCart.find((item) => item.product === newItem.product);
+    
+            if (existingItem) {
+                // Если товар уже есть, увеличиваем его количество
+                return prevCart.map((item) =>
+                    item.product === newItem.product ? { ...item, quantity: item.quantity + 1 } : item
+                );
+            } else {
+                // Если товара нет, добавляем новый
+                return [...prevCart, { ...newItem, quantity: 1 }];
+            }
+        });
+    };
+    
+    
+    
+
+    // Увеличить количество товара
+    const increaseQuantity = (id) => {
+        setCart((prevCart) =>
+            prevCart.map((item) =>
+                item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+            )
+        );
     };
 
-    // Очистка корзины
+    // Уменьшить количество товара (не меньше 1)
+    const decreaseQuantity = (id) => {
+        setCart((prevCart) =>
+            prevCart.map((item) =>
+                item.id === id && item.quantity > 1
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            )
+        );
+    };
+
+    // Удалить товар из корзины
+    const removeFromCart = (productName) => {
+        setCart((prevCart) => prevCart.filter((item) => item.product !== productName));
+    };
+    
+
+    // Очистить корзину полностью
     const clearCart = () => {
         setCart([]);
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+        <CartContext.Provider
+            value={{ cart, addToCart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart }}
+        >
             {children}
         </CartContext.Provider>
     );
 }
 
-// Хук для использования контекста корзины
 export function useCart() {
     return useContext(CartContext);
 }
