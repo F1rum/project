@@ -24,7 +24,7 @@ export default function Promotions() {
         {
             "store": "Пятёрочка",
             "image": "https://avatars.mds.yandex.net/i?id=e228843f49d03bc1751341bb10ba41b0f30bc3bb-10870276-images-thumbs&n=13",
-            "promotion": "Яблоки Гала 1 кгsssssssssssssssssssssssssssssssss",
+            "promotion": "Яблоки Гала 1 кгsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
             "oldPrice": 12900000.99,
             "newPrice": 89.99
         },

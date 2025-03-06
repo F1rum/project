@@ -1,7 +1,19 @@
 import { useCart } from "../../context/CartContext";
 import styles from "./CartPage.module.css";
-import { ArrowLeft } from "lucide-react";
-import { Trash2 } from "lucide-react";
+import { useTab } from "../../context/TabContext";
+import { ArrowLeft, Trash2 } from "lucide-react";
+
+const EmptyCart = ({ setActiveTab }) => {
+    return (
+        <div className={styles.emptyCart}>
+            <div className={styles.emptyCartText}>
+                <h1>Корзина пуста</h1>
+                <p>Перейдите на главную и добавьте продукты</p>
+            </div>
+            <button onClick={() => setActiveTab("home")}>На главную</button>
+        </div>
+    );
+};
 
 
 const CartItem = ({ image, product, price }) => {
@@ -18,6 +30,7 @@ const CartItem = ({ image, product, price }) => {
 
 export default function CartPage() {
     const { cart, clearCart } = useCart();
+    const { setActiveTab } = useTab();
 
     return (
         <div className="scrollable">
@@ -31,11 +44,11 @@ export default function CartPage() {
                         <Trash2 />
                     </button>
                 </div>
-                <div>
+                <div className={styles.cartContainer}>
                     {cart.length > 0 ? (
                         cart.map((item, index) => <CartItem key={index} {...item} />)
                     ) : (
-                        <p className={styles.emptyCart}>Корзина пуста</p>
+                        <EmptyCart setActiveTab={setActiveTab} />
                     )}
                 </div>
             </div>
