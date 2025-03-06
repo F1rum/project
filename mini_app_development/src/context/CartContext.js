@@ -38,24 +38,26 @@ export function CartProvider({ children }) {
     
 
     // Увеличить количество товара
-    const increaseQuantity = (id) => {
-        setCart((prevCart) =>
+    const increaseQuantity = (productName) => {
+        setCart((prevCart) => 
             prevCart.map((item) =>
-                item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+                item.product === productName ? { ...item, quantity: item.quantity + 1 } : item
             )
         );
     };
+    
 
     // Уменьшить количество товара (не меньше 1)
-    const decreaseQuantity = (id) => {
-        setCart((prevCart) =>
+    const decreaseQuantity = (productName) => {
+        setCart((prevCart) => 
             prevCart.map((item) =>
-                item.id === id && item.quantity > 1
+                item.product === productName && item.quantity > 1
                     ? { ...item, quantity: item.quantity - 1 }
                     : item
             )
         );
     };
+    
 
     // Удалить товар из корзины
     const removeFromCart = (productName) => {

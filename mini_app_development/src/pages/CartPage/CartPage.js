@@ -26,9 +26,9 @@ const CartItem = ({ id, image, product, price, quantity, increaseQuantity, decre
                 <p>{price} ₽</p>
             </div>
             <div className={styles.quantityControl}>
-                <button onClick={() => decreaseQuantity(id)} disabled={quantity <= 1}>-</button>
+                <button onClick={() => decreaseQuantity(product)} disabled={quantity <= 1}>-</button>
                 <span>{quantity}</span>
-                <button onClick={() => increaseQuantity(id)}>+</button>
+                <button onClick={() => increaseQuantity(product)}>+</button>
             </div>
             <button className={styles.removeButton} onClick={() => removeFromCart(product)}>
                 <Trash2 />
