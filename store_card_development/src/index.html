@@ -7,11 +7,20 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
  <body>
-     <main>
-        <div class="container">
-            
+    <main>
+        <div id="app">
+            <div class="cards-container">
+                <!-- transition-group нужен для анимации появления/исчезновения карт -->
+                <transition-group name="fade">
+                     <!-- v-for проходит по массиву cards и создает карточки -->
+                    <div v-for="card in cards" :key="card.id" class="card" :style="{ backgroundColor: card.bgColor }">
+                        <!-- выводим изображение карты -->
+                        <img :src="card.image" alt="Логотип карты" class="card-img">
+                    </div>
+                </transition-group>
+            </div>
         </div>
-     </main>
+    </main>
     <footer>
      <nav class="bottom-nav">
       <button class="nav-btn">🏠</button>
@@ -19,6 +28,7 @@
       <button class="nav-btn">🛒</button>
      </nav>
     </footer>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="/main.js"></script>
  </body>
 </html>
