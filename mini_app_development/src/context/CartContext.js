@@ -1,21 +1,29 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-// Создаём контекст
 const CartContext = createContext();
 
-// Хук для доступа к контексту
-export const useCart = () => useContext(CartContext);
-
-// Провайдер корзины
-export const CartProvider = ({ children }) => {
+export function CartProvider({ children }) {
     const [cart, setCart] = useState([]);
 
-    // Добавить товар в корзину
+    // Загружаем корзину из localStorage при первом рендере
+    useEffect(() => {
+        const storedCart = localStorage.getItem("cart");
+        if (storedCart) {
+            setCart(JSON.parse(storedCart));
+        }
+    }, []);
+
+    // Обновляем localStorage при изменении корзины
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
+
+    // Функция добавления товара в корзину
     const addToCart = (product) => {
         setCart((prevCart) => [...prevCart, product]);
     };
 
-    // Очистить корзину
+    // Очистка корзины
     const clearCart = () => {
         setCart([]);
     };
@@ -25,4 +33,9 @@ export const CartProvider = ({ children }) => {
             {children}
         </CartContext.Provider>
     );
-};
+}
+
+// Хук для использования контекста корзины
+export function useCart() {
+    return useContext(CartContext);
+}

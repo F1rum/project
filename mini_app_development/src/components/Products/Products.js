@@ -1,20 +1,22 @@
 import { useState } from "react";
+import { useCart } from "../../context/CartContext"; // ✅ Импортируем CartContext
 import styles from "./Products.module.css";
 
-// 🔹 Компонент карточки продукта
-const ProductCard = ({ image, product, price }) => {
+const ProductCard = ({ image, product, price, addToCart }) => {
     return (
         <div className={styles.productCard}>
             <img src={image} alt={product} className={styles.productImage} loading="lazy" />
             <h3>{product}</h3>
             <p className={styles.price}>{price} ₽</p>
-            <button>Добавить в корзину</button>
+            <button onClick={() => addToCart({ image, product, price })}>
+                Добавить в корзину
+            </button>
         </div>
     );
 };
 
-// 🔹 Имитация данных бэкенда
 export default function Products() {
+    const { addToCart } = useCart(); // ✅ Получаем addToCart из контекста
     const [products] = useState([
         {
             "store": "Пятёрочка",
@@ -87,10 +89,9 @@ export default function Products() {
             "image": "https://avatars.mds.yandex.net/i?id=d3551745b33a8aa6a4c059a44c09769b_l-8961207-images-thumbs&n=13",
             "product": "Картофель 1 кг",
             "price": 35.00
-        }    
+        } 
     ]);
 
-    // 🔹 Группируем товары по магазинам
     const groupedProducts = products.reduce((acc, product) => {
         if (!acc[product.store]) acc[product.store] = [];
         acc[product.store].push(product);
@@ -104,12 +105,7 @@ export default function Products() {
                     <h1>{store}</h1>
                     <div className={styles.productContainer}>
                         {items.map((item, index) => (
-                            <ProductCard
-                                key={index}
-                                image={item.image}
-                                product={item.product}
-                                price={item.price}
-                            />
+                            <ProductCard key={index} {...item} addToCart={addToCart} />
                         ))}
                     </div>
                 </div>

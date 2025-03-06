@@ -1,0 +1,27 @@
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+.cartPage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.cartHeader {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.cartHeader h1 {
+    font-size: 24px;
+    padding: 15px;
+}
+
+.cartHeader button {
+    padding: 10px 17px;
+    font-size: 18px;
+}

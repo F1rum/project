@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { TabProvider } from "./context/TabContext";
+import { CartProvider } from "./context/CartContext";
 import BottomNavBar from "./components/BottomNavBar/BottomNavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import CardsPage from "./pages/CardsPage/CardsPage";
@@ -32,7 +33,9 @@ function AppContent() {
 function App() {
     return (
         <TabProvider>
-            <AppContent />
+            <CartProvider>
+                <AppContent />
+            </CartProvider>
         </TabProvider>
     );
 }
