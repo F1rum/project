@@ -6,7 +6,7 @@ import Products from "../../components/Products/Products";
 
 const NewsCard = ({ title, image, onClick }) => (
     <button className={styles.newsCard} onClick={onClick}>
-        <img src={image} alt={title} className={styles.newsImage} loading="lazy" />
+        <img src={image} alt={title} className={styles.newsImage} />
         <h2 className={styles.newsTitle}>{title}</h2>
     </button>
 );
@@ -14,7 +14,7 @@ const NewsCard = ({ title, image, onClick }) => (
 const CategoriesCard = ({ title, image }) => (
     <div className={styles.categories}>
         <button className={styles.categoriesButton}>
-            <img src={image} alt={title} className={styles.categoriesImage} loading="lazy"/>
+            <img src={image} alt={title} className={styles.categoriesImage} />
         </button>
         <h2 className={styles.categoriesTitle}>{title}</h2>
     </div>
