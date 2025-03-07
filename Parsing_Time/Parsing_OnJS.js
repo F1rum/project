@@ -1,23 +1,24 @@
 const puppeteer = require('puppeteer');
 
-async function scrapeData() {
+async function getFullHtml(url) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto('https://5ka.ru/'); // Replace with the actual URL
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36');
+  
+    try {
+      await page.goto(url, { waitUntil: 'networkidle2' }); // Wait for network to be idle
+      const fullHtml = await page.content();
+      console.log(fullHtml); // Вывод всего HTML-кода в консоль
+      return fullHtml; // Возвращаем HTML-код
+    } catch (error) {
+      console.error('Ошибка при получении HTML:', error);
+      return null;
+    } finally {
+      await browser.close();
+    }
+  }
 
-    // Wait for content to load (adjust the selector and timeout as needed)
-    await page.waitForSelector('.my-element', { timeout: 5000 });
-
-    const data = await page.evaluate(() => {
-        // Extract data using DOM selectors
-        const title = document.querySelector('h1').innerText;
-        const description = document.querySelector('.description').innerText;
-        return { title, description };
-    });
-
-    console.log(data);
-    await browser.close();
-}
-
-scrapeData();
+// Пример использования:
+const urlToScrape = 'https://5ka.ru'; // Замените на нужный URL
+getFullHtml(urlToScrape);
 //node Parsing_OnJS.js
