@@ -3,13 +3,62 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            // массив карт которые будут отображаться на странице
-            cards: [
-                { id: 1, name: 'Магнит', image: '/mag.png', bgColor: "white" },
-                { id: 2, name: 'Перекрёсток', image: '/perek.png', bgColor: "green"},
-                { id: 3, name: 'Пятёрочка', image: '/pyatyora.png', bgColor: "white" }
-            ]
+            cards: [],
+            stores: [],
+            selectedStore: "",
+            isModalOpen: false,
+            maxCards: 5,
+            isTouched: false, 
         };
+    },
+    computed: {
+        availableStores() {
+            return this.stores.filter(store => !this.cards.some(card => card.image === store.image));
+        }
+    },
+    methods: {
+        async loadStores() {
+            try {
+                const response = await fetch("/cards_of_stores.json");
+                if (!response.ok) throw new Error("Ошибка загрузки JSON");
+                this.stores = await response.json();
+            } catch (error) {
+                console.error("Ошибка загрузки JSON:", error);
+            }
+        },
+        openModal() {
+            this.isModalOpen = true;
+        },
+        closeModal() {
+            this.isModalOpen = false;
+        },
+        addCard() {
+            if (this.cards.length >= this.maxCards) {
+                alert("Максимум 5 карт!");
+                return;
+            }
+            const store = this.stores.find(s => s.name === this.selectedStore);
+            if (store) {
+                this.cards.push({
+                    id: Date.now(),
+                    image: store.image
+                });
+                this.selectedStore = "";
+                this.closeModal();
+            } else {
+                alert("Выберите магазин!");
+            }
+        },
+        handleTouchStart() {
+            this.isTouched = true;
+        },
+        handleTouchEnd() {
+            setTimeout(() => {
+                this.isTouched = false;
+            }, 200);
+        }
+    },
+    mounted() {
+        this.loadStores();
     }
-    // подключаем вью приложение к элементу с айди app
-}).mount('#app');
+}).mount("#app");
