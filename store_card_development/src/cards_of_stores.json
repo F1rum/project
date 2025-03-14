@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Пятерочка",
+        "image": "/pyatyora.png"
+    },
+    {
+        "name": "Магнит",
+        "image": "/mag.png"
+    },
+    {
+        "name": "Перекресток",
+        "image": "/perek.png"
+    },
+    {
+        "name": "Дикси",
+        "image": "/diksi.png"
+    },
+    {
+        "name": "Ярче",
+        "image": "/yarche.png"
+    }
+]

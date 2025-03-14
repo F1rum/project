@@ -45,13 +45,12 @@ bot.command("menu", (ctx) => {
 
 
 
-
 // вызов функции из импортированного файла 
+command_ai_assistant(bot);
+
 command_instruction(bot);
 
 command_functional(bot);
-
-command_ai_assistant(bot);
 
 
 
