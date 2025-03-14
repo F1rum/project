@@ -101,28 +101,16 @@ body {
 }
 
 /* анимация для появления модального окна */
-.slide-enter-active, .slide-leave-active {
+.v-enter-active, .v-leave-active {
     transition: opacity 0.3s ease, transform 0.3s ease-out;
 }
 
-.slide-enter-from {
+.v-enter-from, .v-leave-to {
     opacity: 0;
-    transform: translateY(-50px);
 }
 
-.slide-enter-to {
+.v-enter-to, .v-leave-from {
     opacity: 1;
-    transform: translateY(0);
-}
-
-.slide-leave-from {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.slide-leave-to {
-    opacity: 0;
-    transform: translateY(-50px);
 }
 
 .modal-header {
@@ -165,7 +153,62 @@ body {
 
 
 .modal-footer {
-    display: flex;
-    justify-content: space-between;
     margin-top: 20px;
+}
+
+
+
+
+/* поле поиска */
+.search-input {
+    width: 90%;
+    padding: 16px;
+    margin-bottom: 10px;
+    border: 0px;
+    background: #212121;
+    color: #D3D3D3;
+    border-radius: 8px;
+}
+
+/* список магазинов */
+.store-list {
+    max-height: 100px;
+    overflow-y: auto;
+    display: flex;
+    gap: 8px;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}
+
+/* стили магазинов в списке */
+.store-item {
+    padding: 10px;
+    background: #212121;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    text-align: center;
+    font-size: 18px;
+    color: #D3D3D3;
+}
+
+/* при выборе магазин выделяется */
+.store-item.selected {
+    background: #4B0082;
+    color: #F8F8FF;
+}
+
+/* кнопка добавления в модальном окне*/
+.btn-add{
+    border: none;
+    border-radius: 8px;
+    background-color: #212121;
+    color: #D3D3D3;
+    padding: 16px;
+    font-size: 16px;
+}
+.btn-add:active{
+    color: #F8F8FF;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-out, backgroud-color 0.3s ease-out;
 }

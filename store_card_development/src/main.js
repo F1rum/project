@@ -7,55 +7,39 @@ createApp({
             stores: [],
             selectedStore: "",
             isModalOpen: false,
-            maxCards: 5,
-            isTouched: false, 
+            searchQuery: ""
         };
     },
     computed: {
         availableStores() {
-            return this.stores.filter(store => !this.cards.some(card => card.image === store.image));
+            return this.stores.filter(store =>
+                !this.cards.some(card => card.image === store.image) &&
+                store.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
         }
     },
     methods: {
         async loadStores() {
-            try {
-                const response = await fetch("/cards_of_stores.json");
-                if (!response.ok) throw new Error("Ошибка загрузки JSON");
-                this.stores = await response.json();
-            } catch (error) {
-                console.error("Ошибка загрузки JSON:", error);
-            }
+            const response = await fetch("/cards_of_stores.json");
+            this.stores = await response.json();
         },
         openModal() {
             this.isModalOpen = true;
+            this.searchQuery = "";
         },
         closeModal() {
             this.isModalOpen = false;
         },
+        selectStore(storeName) {
+            this.selectedStore = storeName;
+        },
         addCard() {
-            if (this.cards.length >= this.maxCards) {
-                alert("Максимум 5 карт!");
-                return;
-            }
             const store = this.stores.find(s => s.name === this.selectedStore);
             if (store) {
-                this.cards.push({
-                    id: Date.now(),
-                    image: store.image
-                });
+                this.cards.push({ id: Date.now(), image: store.image });
                 this.selectedStore = "";
                 this.closeModal();
-            } else {
-                alert("Выберите магазин!");
             }
-        },
-        handleTouchStart() {
-            this.isTouched = true;
-        },
-        handleTouchEnd() {
-            setTimeout(() => {
-                this.isTouched = false;
-            }, 200);
         }
     },
     mounted() {
