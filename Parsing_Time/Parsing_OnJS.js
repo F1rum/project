@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const fs = require('fs').promises; // Import the fs promises API
+const fs = require('fs').promises;
 const targetUrl = 'https://f1rum.github.io/Gahan/';
 const outputFilePath = 'poducts.json'; 
 
