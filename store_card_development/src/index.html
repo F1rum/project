@@ -29,7 +29,7 @@
                 <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
                     <div class="modal" @click.stop>
                         <div class="modal-header">
-                            <h2>Выберите магазин</h2>
+                            <h2>1. Выберите магазин:</h2>
                             <button class="close-btn" @click="closeModal">✖</button>
                         </div>
             
@@ -51,7 +51,16 @@
                                 {{ store.name }}
                             </div>
                         </div>
-            
+                        <!-- Поле для загрузки фото -->
+                        <div class="photo-section">
+                            <h2>2. Задняя часть карты:</h2>
+                            <div class="custom-file-upload">
+                                <button @click="triggerFileInput" class="pickPhoto">Выбрать фото</button>
+                                <input type="file" ref="fileInput" accept="image/*" @change="handleImageUpload">
+                            </div>
+                            <button @click="openCamera" class="makePhoto">Сделать фото</button>
+                            <img v-if="previewImage" :src="previewImage" class="preview-img">
+                        </div>
                         <div class="modal-footer">
                             <button class="btn btn-add" @click="addCard">Добавить карту</button>
                         </div>
@@ -67,7 +76,7 @@
       <button class="nav-btn">🛒</button>
      </nav>
     </footer>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/vue.global.js"></script> 
   <script src="/main.js"></script>
  </body>
 </html>
