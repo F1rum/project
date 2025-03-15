@@ -1,8 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises; // Import the fs promises API
-// Example usage:
-const targetUrl = 'https://f1rum.github.io/Gahan/'; // Replace with the actual URL
-const outputFilePath = 'poducts.json'; // Replace with the desired output file
+const targetUrl = 'https://f1rum.github.io/Gahan/';
+const outputFilePath = 'poducts.json'; 
 
 async function scrapeAndSave(url, outputFile) {
     const browser = await puppeteer.launch();
