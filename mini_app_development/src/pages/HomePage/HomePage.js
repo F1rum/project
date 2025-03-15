@@ -17,15 +17,15 @@ export default function HomePage() {
     }, []);
 
     return (
-        // Вся страница HomePage теперь прокручивается
-        <div className="scrollable">
+        // Вся страница прокручивается
+        <div className="scrollable"> 
             <div className={styles.navBarHomePage}>
                 <button
                     className={styles.avatarWrapper}
                     onClick={() => console.log("Открыть профиль")}
                 >
                     {user?.photo_url ? (
-                        <img src={user.photo_url} alt="Аватар" className={styles.avatar} />
+                        <img src={user.photo_url} alt="Аватар" className={styles.avatar} loading="lazy"/>
                     ) : (
                         <div className={styles.avatarFallback}></div>
                     )}
@@ -35,7 +35,7 @@ export default function HomePage() {
                     <div
                         className={styles.activeHighlight}
                         style={{
-                            transform: `translate3d(${activeCategory === "Акции" ? "0%" : "100%"}, 0, 0)`,
+                            transform: `translate3d(${activeCategory === "Акции" ? "0%" : "100%"}, 0, 0)`,  //Отрисовка анимации на GPU
                         }}
                     />
                     <button onClick={() => setActiveCategory("Акции")}>Акции</button>
@@ -47,9 +47,8 @@ export default function HomePage() {
                 </button>
             </div>
 
-            {/* Контент прокручивается вместе с верхним блоком */}
             <div className={styles.pageContent}>
-                {activeCategory === "Акции" ? <PromotionsPage /> : <ProductsPage />}
+                {activeCategory === "Акции" ? <PromotionsPage  /> : <ProductsPage />}
             </div>
         </div>
     );

@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useState } from "react";
 import styles from "./PromotionsPage.module.css";
+import Filters from "../../components/Promotions/Filters";
+import Promotions from "../../components/Promotions/Promotions";
 
 export default function PromotionsPage() {
     const [items, setItems] = useState([]);
 
-    // Функция сортировки по количеству акций
     const sortByAmount = () => {
         const sortedItems = [...items].sort((a, b) => b.amount - a.amount);
         setItems(sortedItems);
     };
 
-    // Фильтр "Горячие предложения" (условно всё, что >15)
     const filterHotDeals = () => {
         const hotDeals = items.filter(item => item.amount > 15);
         setItems(hotDeals);
@@ -30,52 +30,11 @@ export default function PromotionsPage() {
             </div>
 
             {/* Фильтры */}
-            <div className={styles.filtersWrapper}>
-                <div className={styles.filters}>
-                    <button onClick={sortByAmount}>
-                        <span>🔽</span> 
-                        По количеству
-                    </button>
-                    <button onClick={filterHotDeals}>
-                        <span>🔥</span> 
-                        Горячие
-                    </button>
-                    <button onClick={sortByAmount}>
-                        <span>🔽</span> 
-                        По количеству
-                    </button>
-                    <button onClick={filterHotDeals}>
-                        <span>🔥</span> 
-                        Горячие
-                    </button>
-                    <button onClick={sortByAmount}>
-                        <span>🔽</span> 
-                        По количеству
-                    </button>
-                    <button onClick={filterHotDeals}>
-                        <span>🔥</span> 
-                        Горячие
-                    </button>
-                </div>
-            </div>
+            <Filters sortByAmount={sortByAmount} filterHotDeals={filterHotDeals} />
 
             {/* Список акций */}
             <div className={styles.promotionsList}>
-                <h1>Список акций:</h1>
-                <div className={styles.stylesForTest}>
-                    <h1>Пятёрочка</h1>
-                    <h5>Текущие акции:</h5>
-                    <div>
-                        <button onClick={() => copyToClipboard("#SALE10")}>
-                            #SALE10
-                            <h4>До 5 марта</h4>
-                        </button>
-                        <button onClick={() => copyToClipboard("#SALE20")}>
-                            #SALE20
-                            <h4>До 15 марта</h4>
-                        </button>
-                    </div>
-                </div>
+                <Promotions copyToClipboard={copyToClipboard} />
                 <p>Это не окончательная стилизация.</p>
             </div>
         </div>

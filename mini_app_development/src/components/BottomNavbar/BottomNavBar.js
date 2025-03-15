@@ -6,6 +6,7 @@ function BottomNavBar() {
     const { activeTab, setActiveTab } = useTab();
 
     return (
+        // Подвал для навигации
         <div className={styles.bottomNav}>
             <button onClick={() => setActiveTab("home")} className={activeTab === "home" ? styles.active : ""}>
                 <Home size={28} />

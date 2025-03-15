@@ -1,0 +1,33 @@
+.filters {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0 0 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.filters button {
+    background: #2a2a2a;
+    width: 90px;
+    height: 70px;
+    border: none;
+    color: #0088cc;
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+    flex-shrink: 0;
+}
+
+.filters span {
+    font-size: 28px;
+    color: #888;
+}

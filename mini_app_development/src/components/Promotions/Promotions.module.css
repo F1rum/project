@@ -1,0 +1,162 @@
+:root {
+    --bg-color: #1c1c1c; /* Основной тёмный фон */
+    --card-bg: #1a1a1a; /* Фон карточек */
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-color: #f5f5f5;
+    --accent-color: #ff7842; /* Акцент на новых ценах */
+    --discount-bg: #e53935; /* Красный фон скидки */
+    --tag-bg: #008f39; /* Фон метки сезона */
+    --button-bg: #222;
+    --button-hover: #333;
+}
+
+.promotionsPage {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh; /* Минимальная высота = вся высота экрана */
+}
+
+/* Контейнер магазина */
+.storeBlock {
+    margin-bottom: 20px;
+    width: 100%;
+    background: none; /* Убираем фон, чтобы не было нагромождения */
+}
+
+.storeBlock h1 {
+    font-size: 24px;
+    padding: 16px 0 0 16px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    color: var(--text-color);
+}
+
+/* Контейнер карточек */
+.promotionContainer {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 0 12px 12px 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    min-height: 200px;
+}
+
+/* Скрытие скроллбара */
+.promotionContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Карточка товара */
+.promotionCard {
+    flex: 0 0 auto;
+    width: 180px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 280px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.promotionCard h3, .priceContainer {
+    flex-grow: 1;
+}
+
+/* Фото товара */
+.promotionImage {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+/* Название магазина (заменяем продукт на магазин) */
+.promotionCard h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: center;
+/*грамотный перенос при сликшом больших названиях*/
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.promotionCard p {
+    padding: 0 0 10px 0;
+}
+
+
+/* Блок с ценами */
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Старая цена */
+.oldPrice {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
+
+/* Новая цена */
+.newPrice {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Метка скидки */
+.discountBadge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--discount-bg);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+/* Метка сезона */
+.seasonBadge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--tag-bg);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+/* Кнопка "В корзину" */
+.promotionCard button {
+    background: var(--button-bg);
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    margin-bottom: auto; /* Автоматически прижимает кнопку вниз */
+}
+
+.promotionCard button:hover {
+    background: var(--button-hover);
+}

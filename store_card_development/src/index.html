@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скидочные карты</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+ <body>
+    <main>
+        <div id="app">
+            <!-- Карточки магазинов -->
+            <div class="cards-container">
+                <div v-for="card in cards" :key="card.id" class="card">
+                    <img :src="card.image" alt="Логотип магазина" class="card-img">
+                </div>
+            </div>
+    
+            <!-- Кнопка для добавления карты -->
+            <button id="modal_card" @click="openModal" @touchstart="handleTouchStart" @touchend="handleTouchEnd">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-plus" viewBox="0 0 16 16" 
+                style="width: 80px;height: 80px; transform: rotate(90deg);">
+                    <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5z"/>
+                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1"/>
+                  </svg>
+            </button>
+            <!-- Модальное окно -->
+            <transition>
+                <div v-if="isModalOpen" class="modal-overlay" @click="closeModal">
+                    <div class="modal" @click.stop>
+                        <div class="modal-header">
+                            <h2>1. Выберите магазин:</h2>
+                            <button class="close-btn" @click="closeModal">✖</button>
+                        </div>
+            
+                        <!-- Поле поиска -->
+                        <input 
+                            type="text" 
+                            v-model="searchQuery" 
+                            placeholder="Поиск магазина..." 
+                            class="search-input"
+                        />
+            
+                        <!-- Список магазинов -->
+                        <div class="store-list">
+                            <div v-for="store in availableStores" 
+                                 :key="store.name"
+                                 class="store-item"
+                                 :class="{'selected': selectedStore === store.name}"
+                                 @click="selectStore(store.name)">
+                                {{ store.name }}
+                            </div>
+                        </div>
+                        <!-- Поле для загрузки фото -->
+                        <div class="photo-section">
+                            <h2>2. Задняя часть карты:</h2>
+                            <div class="custom-file-upload">
+                                <button @click="triggerFileInput" class="pickPhoto">Выбрать фото</button>
+                                <input type="file" ref="fileInput" accept="image/*" @change="handleImageUpload">
+                            </div>
+                            <button @click="openCamera" class="makePhoto">Сделать фото</button>
+                            <img v-if="previewImage" :src="previewImage" class="preview-img">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-add" @click="addCard">Добавить карту</button>
+                        </div>
+                    </div>
+                </div>
+            </transition>            
+        </div>
+    </main>
+    <footer>
+     <nav class="bottom-nav">
+      <button class="nav-btn">🏠</button>
+       <button class="nav-btn active">💳</button>
+      <button class="nav-btn">🛒</button>
+     </nav>
+    </footer>
+    <script src="/vue.global.js"></script> 
+  <script src="/main.js"></script>
+ </body>
+</html>

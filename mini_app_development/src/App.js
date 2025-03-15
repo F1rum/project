@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { TabProvider } from "./context/TabContext";
+import { CartProvider } from "./context/CartContext";
 import BottomNavBar from "./components/BottomNavBar/BottomNavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import CardsPage from "./pages/CardsPage/CardsPage";
@@ -12,10 +13,10 @@ function AppContent() {
     //Отключение сворачивания приложения при свайпе вниз
     useEffect(() => {
         if (window.Telegram?.WebApp) {
-            window.Telegram.WebApp.ready();
-            window.Telegram.WebApp.expand();
+            window.Telegram.WebApp.ready(); //Ожидание
+            window.Telegram.WebApp.expand(); //Автоматическое "поднятие" приложения
             window.Telegram.WebApp.setHeaderColor("#000000"); //чёрный цвет заголовка
-            window.Telegram.WebApp.disableVerticalSwipes();
+            window.Telegram.WebApp.disableVerticalSwipes(); //Отключение сворачивания при свайпе вниз)
         }
     }, []);
 
@@ -32,7 +33,9 @@ function AppContent() {
 function App() {
     return (
         <TabProvider>
-            <AppContent />
+            <CartProvider>
+                <AppContent />
+            </CartProvider>
         </TabProvider>
     );
 }
